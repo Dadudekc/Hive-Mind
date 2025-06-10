@@ -1,0 +1,44 @@
+version: "3.3"
+services:
+  architect:
+    build:
+      context:  backend\architect
+      dockerfile: Dockerfile
+    container_name: hivemind_architect
+    ports:
+      - "8001:8001"
+
+
+  codegen:
+    build: backend\codegen
+    container_name: hivemind_codegen
+    ports:
+      - "8002:8002"
+
+  review:
+    build: backend\review
+    container_name: hivemind_review
+    ports:
+      - "8003:8003"
+
+
+  debugger:
+    build: backend\debugger
+    container_name: hivemind_debugger
+    ports:
+
+      - "8004:8004"
+
+  tests:
+    build: backend\tests
+    container_name: hivemind_tests
+    ports:
+
+      - "8005:8005"
+
+  dashboard:
+    build: frontend\dashboard
+    container_name: hivemind_dashboard
+    ports:
+
+      - "3000:3000"

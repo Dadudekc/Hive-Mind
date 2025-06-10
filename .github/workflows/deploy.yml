@@ -1,0 +1,32 @@
+name: Deploy HiveMind OS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Build Docker Images
+      run: |
+        docker build -t your-dockerhub-user/hivemind-architect backend/architect
+        docker build -t your-dockerhub-user/hivemind-codegen backend/codegen
+        docker build -t your-dockerhub-user/hivemind-review backend/review
+        docker build -t your-dockerhub-user/hivemind-debugger backend/debugger
+        docker build -t your-dockerhub-user/hivemind-tests backend/tests
+    - name: Push Docker Images
+      run: |
+        docker push your-dockerhub-user/hivemind-architect
+        docker push your-dockerhub-user/hivemind-codegen
+        docker push your-dockerhub-user/hivemind-review
+        docker push your-dockerhub-user/hivemind-debugger
+        docker push your-dockerhub-user/hivemind-tests
+
+    - name: Deploy to Kubernetes
+      run: |
+        kubectl apply -f infrastructure/kubernetes/

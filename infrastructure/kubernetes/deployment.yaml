@@ -1,0 +1,40 @@
+# infrastructure/kubernetes/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hivemind-architect
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hivemind-architect
+  template:
+    metadata:
+      labels:
+        app: hivemind-architect
+    spec:
+      containers:
+      - name: hivemind-architect
+        image: your-dockerhub-user/hivemind-architect:latest
+        ports:
+        - containerPort: 8001
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hivemind-codegen
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hivemind-codegen
+  template:
+    metadata:
+      labels:
+        app: hivemind-codegen
+    spec:
+      containers:
+      - name: hivemind-codegen
+        image: your-dockerhub-user/hivemind-codegen:latest
+        ports:
+        - containerPort: 8002

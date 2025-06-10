@@ -1,0 +1,4 @@
+# backend/review/requirements.txt
+fastapi==0.95.2
+uvicorn==0.22.0
+pydantic==1.10.7
