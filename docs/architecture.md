@@ -8,7 +8,7 @@ The services are containerized with Docker and can be orchestrated using Docker 
 
 - **Architect:** Generates project blueprints.
 - **CodeGen:** Generates code stubs based on blueprints.
-- **Review:** Analyzes code for best practice-projectss.
+- **Review:** Analyzes code for best practice-projects-projectss.
 - **Debugger:** Applies debugging fixes to code.
 - **Tests:** Generates basic test cases for the codebase.
 - **Dashboard:** Frontend to visualize and control the system.
